@@ -1,4 +1,5 @@
 import ticketListReducer from '../../reducers/ticket-list-reducer';
+import formVisibleReducer from '../../reducers/form-visible-reducer';
 import "@testing-library/jest-dom/extend-expect";
 
 
@@ -61,5 +62,16 @@ describe('ticketListReducer', () => {
 describe('ticketListReducer', () => {
   test('Should return default state if there is no action type passed into the reducer', () => {
     expect(ticketListReducer({}, { type: null })).toEqual({});
+  });
+});
+
+describe("formVisibleReducer", () => {
+
+  test('Should return default state if no action type is recognized', () => {
+    expect(formVisibleReducer(false, { type: null })).toEqual(false);
+  });
+
+  test('Should toggle form visibility state to true', () => {
+    expect(formVisibleReducer(false, { type: 'TOGGLE_FORM' })).toEqual(true);
   });
 });
